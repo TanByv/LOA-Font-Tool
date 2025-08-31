@@ -52,7 +52,7 @@ class AppUI:
         # --- FontMap Configuration ---
         ttk.Label(left_frame, text="FontMap Configuration", font=('Arial', 12, 'bold')).grid(row=6, column=0, columnspan=3, pady=(0, 10), sticky=tk.W)
         
-        fontmap_frame = ttk.LabelFrame(left_frame, text="Font Entries (leave empty to exclude attribute)", padding="10")
+        fontmap_frame = ttk.LabelFrame(left_frame, text="Font Entries (leave empty to exclude attribute, default values are already filled in)", padding="10")
         fontmap_frame.grid(row=7, column=0, columnspan=3, sticky="we", padx=(20, 0), pady=(0, 10))
         
         ttk.Label(fontmap_frame, text="Font Key", font=('Arial', 10, 'bold')).grid(row=0, column=0, padx=5)
@@ -90,7 +90,7 @@ class AppUI:
         instructions_frame = ttk.LabelFrame(right_frame, text="Usage Instructions", padding="10")
         instructions_frame.pack(fill="both", expand=True)
         
-        instructions_content = "1. Setup Requirements\n• Download QuickBMS 4GB version\n• Locate Lost Ark installation\n\n2. File Selection\n• Browse and select all three files.\n• Select your game language.\n\n3. FontMap Config\n• Adjust size/spacing if needed.\n\n4. Create & Install\n• Click 'Create Modded LPK' and save.\n• Click 'Insert to Game' to apply it.\n\n5. Reverting\n• Click 'Revert to Original'.\n\nFor more help, visit the GitHub repo."
+        instructions_content = "1. Setup Requirements\n• Download QuickBMS\n• Extract quickbms_4gb_files.exe\n\n2. File Selection\n• Browse and select all three files.\n• Select your game language.\n• Original archive can be found in 'Lost Ark\\EFGame' folder. (Steam -> Lost Ark -> Properties -> Installed Files -> Browse)\n\n3. FontMap Config\n• Adjust size/spacing if needed.\n• Size correction controls font size:\n    eg. 120 -> x1.2 of original size.\n    eg. 80 -> x0.8 of original size.\n• Leading correction controls space between lines:\n    eg. 200 -> More space between lines of text.\n    eg. -200 -> Less space between lines of text.\n\n4. Create & Install\n• Click 'Create Modded LPK' and save.\n• Click 'Insert to Game' to apply it.\n• You can skip 'Create Modded LPK' if you already have a modded LPK archive to use.\n• The original 'font.lpk' file will be automatically backed up as 'font.lpk.bak'\n\n5. Reverting\n• Click 'Revert to Original'."
         
         instructions_label = ttk.Label(instructions_frame, text=instructions_content, wraplength=280, justify=tk.LEFT)
         instructions_label.pack(anchor="nw")
