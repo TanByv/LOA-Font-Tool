@@ -2,7 +2,6 @@
 
 A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archive. Easily swap in custom TTF fonts and adjust font size and line spacing for English and Spanish game versions.
 
----
 
 ## Features
 
@@ -12,19 +11,17 @@ A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archi
 - **Automatic backup and restore** of original font.lpk
 - **QuickBMS integration** for safe archive patching
 
----
 
 ## Screenshots
 
 ### Main GUI
 
-![GUI Screenshot](images/ui.jpg)
+![GUI Screenshot](images/gui.jpg)
 
 ### In-game Showcase (FiraCode-Bold Font)
 
 ![In-game Font Example](images/ingame.jpg)
 
----
 
 ## Requirements
 
@@ -45,9 +42,9 @@ A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archi
    Extract `quickbms_4gb_files.exe` from the QuickBMS zip file.
 
 3. **Download the latest release**
+
    [Download LOA Font Tool v1.1](https://github.com/TanByv/LOA-Font-Tool/releases/download/Release/LOA-Font-Tool.exe)
 
----
 
 ## Usage
 
@@ -74,7 +71,6 @@ A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archi
 7. **Revert to Original**
    - Click "Revert to Original" to restore the backup.
 
----
 
 ## Notes
 
@@ -82,7 +78,6 @@ A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archi
 - For other languages, you may need to adjust target indices & encryption keys in the code.
 - Contributions are welcome for adding support for Korean and Russian versions of the game. (Need testers)
 
----
 
 ## Troubleshooting
 
@@ -95,7 +90,6 @@ A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archi
 - **Permission errors:**  
   Run the tool as administrator.
 
----
 
 ## Credits
 
@@ -103,10 +97,7 @@ A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archi
 - Original QuickBMS Repacking Script by [spiritovod & Brouznouf](https://zenhax.com/viewtopic.php@t=2969.html)
 - [QuickBMS](https://aluigi.altervista.org/quickbms.htm) by Luigi Auriemma
 
----
 
 ## License
 
 MIT License
-
----
