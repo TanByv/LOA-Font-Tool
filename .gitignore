@@ -1,4 +1,7 @@
 *.exe
 *.lpk
 *.ttf
+*.ico
+.venv
+build/*
 __pycache__
