@@ -25,7 +25,7 @@ A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archi
 
 ## Requirements
 
-- **Python 3.8+** (Only required if running from source)
+- **Python 3.8+** (Only required if running from source)  
   [Download Python](https://www.python.org/downloads/)
 
 - **QuickBMS Executable**  
@@ -34,7 +34,7 @@ A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archi
 
 ## Setup
 
-1. **Install Python** (Only required if running from source)
+1. **Install Python** (Only required if running from source)  
    Download and install Python from the link above. Make sure to add Python to your PATH.
 
 2. **Download QuickBMS**  
