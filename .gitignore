@@ -2,6 +2,7 @@
 *.lpk
 *.ttf
 *.ico
+*.spec
 .venv
 build/*
 __pycache__
