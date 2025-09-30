@@ -1,4 +1,5 @@
 import os
+import sys
 import ctypes
 import base64
 import subprocess
@@ -9,7 +10,8 @@ from tkinter import filedialog, messagebox
 def is_admin():
     try:
         return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
+    except Exception as e:
+        print(f"Unknown error: {e}")
         return False
 
 def find_game_directory():
@@ -39,8 +41,10 @@ def create_fontmap_xml(fontmap_configs):
         size_correction = fontmap_configs[key]['size_correction'].get().strip()
         leading_correction = fontmap_configs[key]['leading_correction'].get().strip()
         line = f'    <Item Key="{display_name}" File="ExuberanceF-Regular.ttf"'
-        if size_correction: line += f' SizeCorrectionRatio="{size_correction}"'
-        if leading_correction: line += f' LeadingCorrection="{leading_correction}"'
+        if size_correction: 
+            line += f' SizeCorrectionRatio="{size_correction}"'
+        if leading_correction: 
+            line += f' LeadingCorrection="{leading_correction}"'
         line += ' />'
         xml_lines.append(line)
 
@@ -189,9 +193,20 @@ def create_bms_script(target_index, working_dir):
 
 def run_quickbms(quickbms_exe, script_path, input_file, working_dir, log_callback):
     cmd = [quickbms_exe, script_path, input_file, working_dir]
+    
+    creation_flags = 0
+    if sys.platform == 'win32':
+        creation_flags = subprocess.CREATE_NO_WINDOW
+        
     try:
-        # Using check=False to capture stderr on non-zero exit codes.
-        result = subprocess.run(cmd, capture_output=True, text=True, cwd=working_dir, check=False)
+        result = subprocess.run(
+            cmd, 
+            capture_output=True, 
+            text=True, 
+            cwd=working_dir, 
+            check=False,
+            creationflags=creation_flags
+        )
         if result.returncode != 0:
             log_callback(f"QuickBMS error: {result.stderr.strip()}")
             return False

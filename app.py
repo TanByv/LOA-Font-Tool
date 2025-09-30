@@ -103,11 +103,12 @@ class FontModdingTool:
         # 2. Create and insert FontMap.xml
         fontmap_path = working_dir / "FontMap.xml"
         fontmap_content = utils.create_fontmap_xml(self.fontmap_configs)
-        with open(fontmap_path, 'w', encoding='utf-8') as f: f.write(fontmap_content)
+        with open(fontmap_path, 'w', encoding='utf-8') as f: 
+            f.write(fontmap_content)
         self.log_message("Created FontMap.xml")
         
         script_path = utils.create_bms_script(fontmap_index, str(working_dir))
-        self.log_message(f"Running QuickBMS for FontMap.xml...")
+        self.log_message("Running QuickBMS for FontMap.xml...")
         if not utils.run_quickbms(self.quickbms_path.get(), script_path, str(fontmap_path), str(working_dir), self.log_message):
             messagebox.showerror("Error", "Failed to run QuickBMS for FontMap.xml")
             return
@@ -126,7 +127,7 @@ class FontModdingTool:
         shutil.copy2(self.ttf_file_path.get(), ttf_working_path)
         
         script_path = utils.create_bms_script(font_index, str(working_dir))
-        self.log_message(f"Running QuickBMS for TTF file...")
+        self.log_message("Running QuickBMS for TTF file...")
         if not utils.run_quickbms(self.quickbms_path.get(), script_path, str(ttf_working_path), str(working_dir), self.log_message):
             messagebox.showerror("Error", "Failed to run QuickBMS for TTF file")
             return
@@ -168,7 +169,8 @@ class FontModdingTool:
                  return
 
         game_dir = utils.find_game_directory()
-        if not game_dir: return
+        if not game_dir: 
+            return
 
         font_lpk_path = os.path.join(game_dir, "font.lpk")
         backup_path = os.path.join(game_dir, "font.lpk.bak")
@@ -192,7 +194,8 @@ class FontModdingTool:
         self.log_message("Starting revert process...")
 
         game_dir = utils.find_game_directory()
-        if not game_dir: return
+        if not game_dir: 
+            return
 
         font_lpk_path = os.path.join(game_dir, "font.lpk")
         backup_path = os.path.join(game_dir, "font.lpk.bak")
