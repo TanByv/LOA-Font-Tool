@@ -41,7 +41,7 @@ A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archi
    Extract `quickbms_4gb_files.exe` from the QuickBMS zip file.
 
 3. **Download the latest release**  
-   [Download LOA Font Tool v1.1](https://github.com/TanByv/LOA-Font-Tool/releases/download/Release/LOA-Font-Tool.exe)
+   [Download LOA Font Tool v1.2](https://github.com/TanByv/LOA-Font-Tool/releases/download/Release/LOA-Font-Tool.exe)
 
 
 ## Usage

@@ -98,7 +98,7 @@ class AppUI:
         info_frame = ttk.Frame(right_frame)
         info_frame.pack(side="bottom", fill="x", pady=(10,0))
         
-        ttk.Label(info_frame, text="Version: v1.1").pack(side="left")
+        ttk.Label(info_frame, text="Version: v1.2").pack(side="left")
         github_link = ttk.Label(info_frame, text="GitHub Repository", foreground="blue", cursor="hand2")
         github_link.pack(side="right")
         github_link.bind("<Button-1>", self.open_github_link)
