@@ -5,11 +5,11 @@ A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archi
 
 ## Features
 
-- **Easy-to-use GUI** for selecting files and configuring font settings
-- **Supports English and Spanish** Lost Ark versions (Steam)
-- **FontMap.xml generator** with customizable size and leading corrections
-- **Automatic backup and restore** of original font.lpk
-- **QuickBMS integration** for safe archive patching
+- Easy-to-use GUI for selecting files and configuring font settings
+- Supports English and Spanish Lost Ark versions (Steam)
+- FontMap.xml generator with customizable size and leading corrections
+- Automatic backup and restore of original font.lpk
+- QuickBMS integration for safe archive patching
 
 
 ## Screenshots
