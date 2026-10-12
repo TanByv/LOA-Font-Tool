@@ -91,6 +91,5 @@ A simple GUI tool for modding fonts in Lost Ark by patching the `font.lpk` archi
 
 ## Credits
 
-- LOA Font Tool by [Tan](https://github.com/tanbyv) (Discord: @tanbb)
 - Original QuickBMS Repacking Script by [spiritovod & Brouznouf](https://zenhax.com/viewtopic.php@t=2969.html)
 - [QuickBMS](https://aluigi.altervista.org/quickbms.htm) by Luigi Auriemma
