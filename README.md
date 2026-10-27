@@ -2,11 +2,7 @@
 
 # THIS PROJECT IS RETIRED
 
-## A newer, actively maintained version is available now:
-
-# [**LOAFONT-RS**](https://github.com/TanByv/loafont-rs)
-
-### [Download the latest release](https://github.com/TanByv/loafont-rs/releases/latest)
+## A newer, actively maintained version is available now: [**loafont-rs**](https://github.com/TanByv/loafont-rs)
 
 </div>
 
@@ -42,21 +38,6 @@ A small GUI utility for patching the Lost Ark font.lpk archive and replacing the
 - Python 3.13 or newer for running from source
 - QuickBMS executable for the archive patching step
 - A Windows installation of Lost Ark with an EFGame folder containing font.lpk
-
-## Windows executable
-
-A standalone `LOA-Font-Tool.exe` is built with PyInstaller. Pushing a `v*` tag
-runs the [release workflow](.github/workflows/build-release.yml), uploads the
-executable as a workflow artifact, and attaches it to the GitHub release.
-
-To build the executable locally on Windows:
-
-```powershell
-uv sync --group dev
-uv run pyinstaller --noconfirm --clean --onefile --windowed --name LOA-Font-Tool --paths src run.py
-```
-
-The executable is written to `dist\LOA-Font-Tool.exe`.
 
 ## Running from source
 
