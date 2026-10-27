@@ -13,7 +13,7 @@ def default_path() -> Path:
 def load(path=None) -> dict:
     try:
         return json.loads(Path(path or default_path()).read_text(encoding="utf-8"))
-    except Exception:
+    except (OSError, ValueError):
         return {}
 
 

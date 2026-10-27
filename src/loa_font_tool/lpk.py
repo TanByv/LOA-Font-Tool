@@ -11,9 +11,9 @@ import shutil
 import subprocess
 import sys
 import tempfile
+from collections.abc import Callable, Sequence
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Callable, Sequence, Union
 
 
 class LpkError(RuntimeError):
@@ -270,7 +270,7 @@ def norm(path: str) -> str:
 
 
 _LINE = re.compile(r"^\s*([0-9a-fA-F]{16})\s+(\d+)\s+(\S.*?)\s*$")
-_COUNT = re.compile(r"(\d+)\s+files?\s+found", re.I)
+_COUNT = re.compile(r"(\d+)\s+files?\s+found", re.IGNORECASE)
 
 
 def parse_listing(text: str) -> list[Entry]:
@@ -308,7 +308,7 @@ def is_modded(entries: Sequence[Entry]) -> bool:
 
 # QuickBMS wrapper
 
-Source = Union[Path, bytes]
+Source = Path | bytes
 
 
 class QuickBMS:
@@ -342,6 +342,7 @@ class QuickBMS:
                 errors="replace",
                 stdin=subprocess.DEVNULL,
                 timeout=600,
+                check=False,
                 creationflags=flags,
             )
         except FileNotFoundError:

@@ -601,6 +601,6 @@ class FontModdingTool:
     def on_close(self):
         try:
             config.save(self._snapshot())
-        except Exception:
-            pass
+        except OSError as e:
+            self.log(f"Could not save settings: {e}")
         self.root.destroy()

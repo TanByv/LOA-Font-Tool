@@ -10,7 +10,7 @@ def main():
         root = tk.Tk()
         FontModdingTool(root)
         root.mainloop()
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         traceback.print_exc()
         messagebox.showerror(
             "Fatal Error", f"An unexpected error occurred on startup:\n{e}"

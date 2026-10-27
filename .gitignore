@@ -4,5 +4,6 @@
 *.ico
 *.spec
 .venv
-build/*
+build/
+dist/
 __pycache__

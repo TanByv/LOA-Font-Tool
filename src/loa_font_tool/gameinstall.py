@@ -2,31 +2,37 @@
 
 from __future__ import annotations
 
+import contextlib
 import ctypes
 import hashlib
 import json
 import os
 import re
 import shutil
+from collections.abc import Callable
 from pathlib import Path
-from typing import Callable, Optional
 
 GAME_FOLDER = "Lost Ark"
 
 
 def is_admin() -> bool:
     try:
+        # pyrefly: ignore[missing-attribute]
         return bool(ctypes.windll.shell32.IsUserAnAdmin())
-    except Exception:
+    except (AttributeError, OSError):
         return False
 
 
 def _steam_libraries() -> list[Path]:
     libs: list[Path] = []
-    try:
+    with contextlib.suppress(ImportError, OSError):
         import winreg
 
-        with winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Valve\Steam") as k:
+        with winreg.OpenKey(  # pyrefly: ignore[missing-attribute]
+            winreg.HKEY_CURRENT_USER,  # pyrefly: ignore[missing-attribute]
+            r"Software\Valve\Steam",
+        ) as k:
+            # pyrefly: ignore[missing-attribute]
             steam = Path(winreg.QueryValueEx(k, "SteamPath")[0])
         libs.append(steam)
         vdf = steam / "steamapps" / "libraryfolders.vdf"
@@ -36,14 +42,12 @@ def _steam_libraries() -> list[Path]:
                 Path(m.replace("\\\\", "\\"))
                 for m in re.findall(r'"path"\s+"([^"]+)"', text)
             ]
-    except Exception:
-        pass
     pf = os.environ.get("ProgramFiles(x86)", r"C:\Program Files (x86)")
     libs.append(Path(pf) / "Steam")
     return libs
 
 
-def find_game_dir() -> Optional[Path]:
+def find_game_dir() -> Path | None:
     seen = set()
     for lib in _steam_libraries():
         d = lib / "steamapps" / "common" / GAME_FOLDER / "EFGame"
@@ -70,14 +74,14 @@ def _paths(game_dir: Path):
     )
 
 
-def _recorded_hash(info: Path) -> Optional[str]:
+def _recorded_hash(info: Path) -> str | None:
     try:
         return json.loads(info.read_text())["mod_sha256"]
-    except Exception:
+    except (OSError, ValueError, KeyError, TypeError):
         return None
 
 
-def current_is_modded(game_dir: Path, scan_result: Optional[bool]) -> Optional[bool]:
+def current_is_modded(game_dir: Path, scan_result: bool | None) -> bool | None:
     """True/False if known; None if undeterminable. scan_result comes from inspecting
     the archive's entry names (lpk.is_modded)."""
     font, _, info = _paths(game_dir)
@@ -90,7 +94,7 @@ def current_is_modded(game_dir: Path, scan_result: Optional[bool]) -> Optional[b
 
 
 def install(
-    mod: Path, game_dir: Path, modded_now: Optional[bool], log: Callable[[str], None]
+    mod: Path, game_dir: Path, modded_now: bool | None, log: Callable[[str], None]
 ) -> None:
     font, bak, info = _paths(game_dir)
     if not font.exists():

@@ -2,6 +2,7 @@ import json
 import tkinter as tk
 import webbrowser
 from tkinter import ttk
+from typing import Any, cast
 
 from . import lpk
 
@@ -336,7 +337,8 @@ class AppUI:
     def _contents_dblclick(self, event):
         row = self.contents.identify_row(event.y)
         if row:
-            self.ctl.extra_entry.set(self.contents.item(row, "values")[2])
+            values = cast(tuple[Any, ...], self.contents.item(row, "values"))
+            self.ctl.extra_entry.set(values[2])
             self.notebook.select(self.extra_tab)
 
     # fontmap table
@@ -392,7 +394,7 @@ class AppUI:
         return [
             {"entry": str(v[0]), "file": str(v[1])}
             for v in (
-                self.extra_tree.item(i, "values")
+                cast(tuple[Any, ...], self.extra_tree.item(i, "values"))
                 for i in self.extra_tree.get_children()
             )
         ]
